@@ -24,6 +24,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        checkUser();
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
         etSignup = findViewById(R.id.etSignup);
@@ -42,6 +43,12 @@ public class LoginActivity extends AppCompatActivity {
                 login(etUsername.getText().toString(),etPassword.getText().toString());
             }
         });
+    }
+
+    private void checkUser() {
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        if (currentUser != null)
+            goMainActivity();
     }
 
     private void login(String username, String password) {

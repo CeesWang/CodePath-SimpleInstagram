@@ -7,9 +7,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,6 +30,7 @@ import java.io.File;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    private BottomNavigationView bottomNavigationView;
     private EditText etDescription;
     private Button btnSubmit;
     private Button btnCapturePic;
@@ -40,9 +44,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        etDescription = findViewById(R.id.etDescription);
+        etDescription = findViewById(R.id.etCaption);
         ivPicture = findViewById(R.id.ivPicture);
         btnSubmit = findViewById(R.id.btnSubmit);
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
         btnCapturePic = findViewById(R.id.btnCapturePic);
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,8 +67,39 @@ public class MainActivity extends AppCompatActivity {
                 launchCamera();
             }
         });
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.action_home:
+                        // do something here
+                        return true;
+                    case R.id.action_post:
+                        goMakePostActivity();
+                        return true;
+                    case R.id.action_user:
+                        goUserActivity();
+                        return true;
+                    default: return true;
+                }
+            }
+        });
         queryPosts();
     }
+    /*
+    @Override
+
+     */
+
+    private void goUserActivity() {
+        Intent i = new Intent(this, UserActivity.class);
+        startActivity(i);
+    }
+    private void goMakePostActivity() {
+        Intent i = new Intent(this, MakePostActivity.class);
+        startActivity(i);
+    }
+
 
     private void launchCamera() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
