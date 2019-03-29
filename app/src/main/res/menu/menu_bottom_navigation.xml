@@ -7,7 +7,7 @@
         android:title="home"
         app:showAsAction="always" />
     <item
-        android:id="@+id/action_post"
+        android:id="@+id/action_compose"
         android:icon="@drawable/state_post"
         android:title="home"
         app:showAsAction="ifRoom" />

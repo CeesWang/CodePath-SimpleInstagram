@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_color">
+
+    <Button
+        android:id="@+id/btnCapturePic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/btn_border"
+        android:text="Take Picture"
+        android:textColor="@android:color/white" />
+
+    <ImageView
+        android:id="@+id/ivPicture"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_marginBottom="10dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+
+    <EditText
+        android:id="@+id/etCaption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_weight="1"
+        android:hint="Caption"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/btn_border"
+        android:text="Post"
+        android:textColor="@android:color/white" />
+</LinearLayout>

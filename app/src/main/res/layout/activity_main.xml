@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
@@ -15,7 +15,6 @@
         android:layout_height="wrap_content"
         app:titleTextColor="@android:color/white"
         android:background="?attr/colorPrimary">
-
         <ImageView
             android:id="@+id/iv_camera"
             android:layout_width="wrap_content"
@@ -31,65 +30,43 @@
             app:srcCompat="@drawable/instagram_logo" />
 
         <ImageView
-            android:id="@+id/iv_paper_plane"
+            android:id="@+id/iv_menu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
+            android:contextClickable="true"
             android:layout_marginRight="15dp"
-            app:srcCompat="@drawable/ic_nav_inbox_paper_plane" />
+            app:srcCompat="@drawable/ic_menu" />
     </android.support.v7.widget.Toolbar>
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#26FFFFFF"
+        android:layout_below="@+id/toolbar"/>
+
+    <FrameLayout
+        android:id="@+id/flContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/divider2"
+        android:layout_below="@id/divider"/>
 
     <View
         android:id="@+id/divider2"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginBottom="10dp"
-        android:elevation="4dp"
+        android:layout_above="@id/bottom_navigation"
         android:background="#26FFFFFF" />
 
-    <EditText
-        android:id="@+id/etCaption"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Caption"
-        android:inputType="textPersonName" />
-
-    <Button
-        android:id="@+id/btnCapturePic"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/btn_border"
-        android:textColor="@android:color/white"
-        android:text="Take Picture" />
-
-    <ImageView
-        android:id="@+id/ivPicture"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        tools:srcCompat="@tools:sample/avatars" />
-
-    <Button
-        android:id="@+id/btnSubmit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/btn_border"
-        android:text="Post"
-        android:textColor="@android:color/white" />
-
     <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_gravity="bottom">
+        app:menu="@menu/menu_bottom_navigation"
+        app:labelVisibilityMode="unlabeled"
+        app:itemIconTint="@android:color/black" />
 
-        <android.support.design.widget.BottomNavigationView
-            android:id="@+id/bottom_navigation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:menu="@menu/menu_bottom_navigation"
-            app:labelVisibilityMode="unlabeled"
-            app:itemIconTint="@android:color/black" />
-    </android.support.design.widget.BottomNavigationView>
-</LinearLayout>
+
+</RelativeLayout>
